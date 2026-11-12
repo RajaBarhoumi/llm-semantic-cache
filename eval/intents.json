@@ -1,0 +1,243 @@
+{
+  "_comment": "Customer-support intents of a fictitious online shop. Each intent lists paraphrases that deserve the SAME answer. Intents sharing a 'group' are confusable on purpose (same words, different answer): they are the hard negatives. 'split' separates calibration (dev) from reporting (test); a whole group is always in the same split, so every confusable pair is scored.",
+  "intents": [
+    {"id": "track_order", "group": "orders", "split": "dev", "variants": [
+      "Where is my order?",
+      "Can you tell me where my package is?",
+      "I want to track my order",
+      "where's my parcel??",
+      "How can I check the status of my delivery?",
+      "my order hasnt arrived yet, where is it"
+    ]},
+    {"id": "cancel_order", "group": "orders", "split": "dev", "variants": [
+      "How do I cancel my order?",
+      "I want to cancel the order I just placed",
+      "Can I still cancel my purchase?",
+      "cancel my order pls",
+      "Is it possible to cancel an order after paying?"
+    ]},
+    {"id": "change_shipping_address", "group": "orders", "split": "dev", "variants": [
+      "How can I change the delivery address of my order?",
+      "I entered the wrong shipping address, can I fix it?",
+      "Can I update the address on an order I already placed?",
+      "need to change where my order is being shipped",
+      "wrong address on my order, how do I change it"
+    ]},
+    {"id": "modify_order_items", "group": "orders", "split": "dev", "variants": [
+      "Can I add an item to an order I already placed?",
+      "How do I change the items in my order?",
+      "I want to remove a product from my order",
+      "can i modify what i ordered",
+      "Is it possible to swap a product in my existing order?"
+    ]},
+
+    {"id": "shipping_cost", "group": "shipping", "split": "test", "variants": [
+      "How much does shipping cost?",
+      "What are your delivery fees?",
+      "Is shipping free?",
+      "how much do you charge for delivery",
+      "Do I have to pay for shipping?"
+    ]},
+    {"id": "shipping_time", "group": "shipping", "split": "test", "variants": [
+      "How long does delivery take?",
+      "When will I receive my order after buying?",
+      "What is the usual shipping time?",
+      "how many days for delivery",
+      "How fast do you ship?"
+    ]},
+    {"id": "ship_to_canada", "group": "shipping_country", "split": "dev", "variants": [
+      "Do you ship to Canada?",
+      "Can I order from Canada?",
+      "Is delivery available in Canada?",
+      "do you deliver to canada",
+      "Can you send orders to Canada?"
+    ]},
+    {"id": "ship_to_france", "group": "shipping_country", "split": "dev", "variants": [
+      "Do you ship to France?",
+      "Can I order from France?",
+      "Is delivery available in France?",
+      "do you deliver to france",
+      "Can you send orders to France?"
+    ]},
+    {"id": "express_shipping", "group": "shipping", "split": "test", "variants": [
+      "Do you offer express shipping?",
+      "Can I get next-day delivery?",
+      "Is there a faster shipping option?",
+      "express delivery available?",
+      "How can I get my order delivered tomorrow?"
+    ]},
+
+    {"id": "return_policy", "group": "returns", "split": "test", "variants": [
+      "What is your return policy?",
+      "How many days do I have to return an item?",
+      "Can I return a product I don't like?",
+      "whats the return window",
+      "Are returns free?"
+    ]},
+    {"id": "start_return", "group": "returns", "split": "test", "variants": [
+      "How do I return an item?",
+      "I want to send back a product, what do I do?",
+      "How do I start a return?",
+      "need to return my shoes, how",
+      "Where do I get a return label?"
+    ]},
+    {"id": "refund_status", "group": "returns", "split": "test", "variants": [
+      "When will I get my refund?",
+      "I returned my item but haven't been refunded yet",
+      "How long does a refund take?",
+      "where is my refund",
+      "My refund still hasn't arrived, what's going on?"
+    ]},
+    {"id": "exchange_size", "group": "returns", "split": "test", "variants": [
+      "Can I exchange an item for a different size?",
+      "The shoes are too small, can I swap them for a bigger size?",
+      "How do I exchange a product for another size?",
+      "wrong size, can i exchange it",
+      "Is it possible to get the same item in another size?"
+    ]},
+
+    {"id": "reset_password", "group": "account", "split": "dev", "variants": [
+      "I forgot my password",
+      "How do I reset my password?",
+      "I can't log in because I lost my password",
+      "forgot password help",
+      "How can I recover access to my account without my password?"
+    ]},
+    {"id": "change_password", "group": "account", "split": "dev", "variants": [
+      "How do I change my password?",
+      "I want to set a new password for my account",
+      "Where can I update my password?",
+      "change password",
+      "How can I pick a different password while logged in?"
+    ]},
+    {"id": "change_email", "group": "account", "split": "dev", "variants": [
+      "How do I change the email address on my account?",
+      "I want to use a different email for my account",
+      "Can I update my login email?",
+      "change my account email",
+      "How do I switch the email linked to my profile?"
+    ]},
+    {"id": "delete_account", "group": "account", "split": "dev", "variants": [
+      "How do I delete my account?",
+      "I want to close my account permanently",
+      "Can you remove all my data and my account?",
+      "delete my account",
+      "How can I deactivate my profile for good?"
+    ]},
+    {"id": "two_factor", "group": "account", "split": "dev", "variants": [
+      "How do I turn on two-factor authentication?",
+      "Can I add 2FA to my account?",
+      "How do I enable two-step verification?",
+      "set up 2fa",
+      "Is there a way to secure my login with a code on my phone?"
+    ]},
+
+    {"id": "payment_methods", "group": "billing", "split": "test", "variants": [
+      "What payment methods do you accept?",
+      "Can I pay with PayPal?",
+      "Do you take credit cards?",
+      "how can i pay",
+      "Which ways of paying are available?"
+    ]},
+    {"id": "card_declined", "group": "billing", "split": "test", "variants": [
+      "Why was my card declined?",
+      "My payment keeps failing",
+      "The checkout rejects my credit card",
+      "card declined at checkout",
+      "I can't complete the payment, my card is refused"
+    ]},
+    {"id": "invoice_order_1001", "group": "invoices", "split": "dev", "variants": [
+      "Can I get the invoice for order 1001?",
+      "Please send me the invoice of order #1001",
+      "Where can I download the invoice for order 1001?",
+      "invoice for order 1001",
+      "I need a receipt for my order 1001"
+    ]},
+    {"id": "invoice_order_1002", "group": "invoices", "split": "dev", "variants": [
+      "Can I get the invoice for order 1002?",
+      "Please send me the invoice of order #1002",
+      "Where can I download the invoice for order 1002?",
+      "invoice for order 1002",
+      "I need a receipt for my order 1002"
+    ]},
+    {"id": "invoice_order_2047", "group": "invoices_test", "split": "test", "variants": [
+      "Could you email me the invoice for order 2047?",
+      "I can't find the invoice of order #2047",
+      "Is there a PDF invoice for order 2047?",
+      "invoice order 2047",
+      "My accountant needs the bill for order 2047"
+    ]},
+    {"id": "invoice_order_2048", "group": "invoices_test", "split": "test", "variants": [
+      "Could you email me the invoice for order 2048?",
+      "I can't find the invoice of order #2048",
+      "Is there a PDF invoice for order 2048?",
+      "invoice order 2048",
+      "My accountant needs the bill for order 2048"
+    ]},
+    {"id": "ship_to_germany", "group": "shipping_country_test", "split": "test", "variants": [
+      "Do you deliver to Germany?",
+      "Can customers in Germany place orders?",
+      "Is shipping to Germany possible?",
+      "ship to germany?",
+      "Do you send parcels to Germany?"
+    ]},
+    {"id": "ship_to_spain", "group": "shipping_country_test", "split": "test", "variants": [
+      "Do you deliver to Spain?",
+      "Can customers in Spain place orders?",
+      "Is shipping to Spain possible?",
+      "ship to spain?",
+      "Do you send parcels to Spain?"
+    ]},
+    {"id": "discount_code", "group": "billing", "split": "test", "variants": [
+      "How do I use a discount code?",
+      "Where do I enter my promo code?",
+      "My coupon code doesn't work",
+      "apply promo code",
+      "Can I add a voucher at checkout?"
+    ]},
+
+    {"id": "size_guide", "group": "product", "split": "dev", "variants": [
+      "Where can I find the size guide?",
+      "How do I know which size to choose?",
+      "Do your shoes run small or large?",
+      "size chart?",
+      "What size should I order?"
+    ]},
+    {"id": "restock_jacket", "group": "restock", "split": "test", "variants": [
+      "When will the rain jacket be back in stock?",
+      "Is the rain jacket going to be restocked?",
+      "The rain jacket is sold out, when is it coming back?",
+      "rain jacket restock date",
+      "Will you get more rain jackets soon?"
+    ]},
+    {"id": "restock_sneakers", "group": "restock", "split": "test", "variants": [
+      "When will the running sneakers be back in stock?",
+      "Are the running sneakers going to be restocked?",
+      "The running sneakers are sold out, when are they coming back?",
+      "running sneakers restock date",
+      "Will you get more running sneakers soon?"
+    ]},
+    {"id": "warranty", "group": "product", "split": "dev", "variants": [
+      "Do your products have a warranty?",
+      "How long is the warranty?",
+      "My item broke after two months, is it covered?",
+      "warranty info",
+      "What does the guarantee cover?"
+    ]},
+
+    {"id": "contact_support", "group": "support", "split": "dev", "variants": [
+      "How can I contact customer service?",
+      "Can I talk to a human?",
+      "What is your support phone number?",
+      "contact support",
+      "I need to speak with an agent"
+    ]},
+    {"id": "support_hours", "group": "support", "split": "dev", "variants": [
+      "What are your customer service hours?",
+      "When is support available?",
+      "Is customer service open on weekends?",
+      "support opening hours",
+      "At what time can I reach your team?"
+    ]}
+  ]
+}
