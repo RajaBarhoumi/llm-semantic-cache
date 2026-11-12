@@ -1,0 +1,76 @@
+### Test requests (VS Code "REST Client" extension or JetBrains HTTP Client)
+### Start the service first: uvicorn app.main:app --reload
+@base = http://127.0.0.1:8000
+
+### Health: model, embedding model, threshold, guard
+GET {{base}}/health
+
+### 1. First question: miss, the LLM answers and the answer is cached
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "How do I reset my password?"}
+
+### 2. Same meaning, different words: semantic hit, no LLM call
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "I forgot my password"}
+
+### 3. Same question, different casing and punctuation: exact hit
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "how do i reset my password"}
+
+### 4. Known weakness: "change" vs "reset" password scores 0.87 and IS served from the cache
+###    (see "Limitations" in the README). Use bypass_cache or a stricter threshold for such cases.
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "How do I change my password?"}
+
+### 4b. Same words, different meaning, and caught: a different intent with low similarity
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "How do I delete my account?"}
+
+### 5. Invoice for order 1001
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "Can I get the invoice for order 1001?"}
+
+### 6. Order 1002: very similar text, blocked by the entity guard (see guard_rejected_question)
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "Can I get the invoice for order 1002?"}
+
+### 7. Another tenant never sees the first tenant's answers
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "I forgot my password", "namespace": "other-shop"}
+
+### 8. Skip the cache (time-sensitive question)
+POST {{base}}/ask
+Content-Type: application/json
+
+{"question": "How do I reset my password?", "bypass_cache": true}
+
+### 9. Why did (or didn't) a question hit? Nearest cached questions, no LLM call
+POST {{base}}/cache/lookup
+Content-Type: application/json
+
+{"question": "I lost my password"}
+
+### 10. Hit rate, cost saved, latency of hits vs misses
+GET {{base}}/stats
+
+### 11. Cached entries, most used first
+GET {{base}}/cache/entries
+
+### 12. Empty the cache of one namespace (omit the parameter to empty everything)
+DELETE {{base}}/cache?namespace=other-shop
